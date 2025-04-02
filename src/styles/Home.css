@@ -1,0 +1,6 @@
+.img-container {
+    img {
+        max-width:90%;
+        border-radius: 5px;
+    }
+}

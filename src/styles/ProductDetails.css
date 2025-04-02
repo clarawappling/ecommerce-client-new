@@ -1,0 +1,24 @@
+#product-image {
+    max-width: 420px;
+  
+}
+
+#product-image:hover {
+    cursor:default;
+    transform: scale(1.07);
+}
+
+#product-customer-item {
+    min-width: 90%; 
+    text-align: center; 
+    gap: 2rem;
+}
+
+#product-customer-item:hover {
+   transform: none; 
+  
+}
+
+.product-name {
+    cursor: default;
+}

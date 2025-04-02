@@ -1,0 +1,11 @@
+
+.order-item {
+    button {
+        margin-top: 0.3rem;
+    }
+    .neutral-btn {
+        background-color: rgba(184, 217, 221, 0.589);
+        padding: 1rem;
+      }
+
+}

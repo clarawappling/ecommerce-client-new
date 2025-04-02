@@ -1,0 +1,13 @@
+
+.order-item {
+    background-color: #0f7e8617;
+    text-align: left;
+    padding: 3rem;   
+    margin: 10px;
+    min-width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}

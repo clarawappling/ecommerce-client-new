@@ -1,0 +1,9 @@
+#main-nav, #admin-nav {
+
+    ul {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        gap: 5rem;
+    }
+}
