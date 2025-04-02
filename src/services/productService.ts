@@ -1,7 +1,7 @@
 import axios from "axios"
 import { Product, ProductCreate, ProductUpdate } from "../models/Product"
 
-const PRODUCTS_URL = "https://ecommerce-api-8zdx596q0-clara-wapplings-projects.vercel.app/products"
+const PRODUCTS_URL = "https://ecommerce-api-new.vercel.app/products"
 
 
 // GET ALL PRODUCTS

@@ -3,7 +3,7 @@ import { Customer, CustomerCreate, CustomerUpdate } from "../models/Customer";
 import { CustomerCreateResponse } from "../models/CustomerCreateReponse";
 
 
-const CUSTOMERS_URL = "https://ecommerce-api-8zdx596q0-clara-wapplings-projects.vercel.app/customers"
+const CUSTOMERS_URL = "https://ecommerce-api-new.vercel.app/customers"
 
 // GET ALL CUSTOMERS
 export const getAllCustomers = async (): Promise<Customer[]> => {

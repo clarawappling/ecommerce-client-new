@@ -2,7 +2,7 @@ import axios from "axios"
 import { DetailedOrder, Order, OrderCreate, OrderStatusUpdate } from "../models/Order";
 import { OrderCreateResponse } from "../models/OrderCreateResponse";
 
-    const ORDERS_URL = "https://ecommerce-api-8zdx596q0-clara-wapplings-projects.vercel.app/orders"
+    const ORDERS_URL = "https://ecommerce-api-new.vercel.app/orders"
    
     // GET ALL ORDERS
     export const fetchOrders = async (): Promise<Order[]> => {

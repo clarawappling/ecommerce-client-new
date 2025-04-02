@@ -1,7 +1,7 @@
 import axios from "axios";
 import { OrderItemUpdate } from "../models/OrderItem";
 
-const ORDER_ITEM_URL = "https://ecommerce-api-8zdx596q0-clara-wapplings-projects.vercel.app/order-items/"
+const ORDER_ITEM_URL = "https://ecommerce-api-new.vercel.app/order-items/"
 
 
 // DELETE ORDER ITEM
