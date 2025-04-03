@@ -42,7 +42,7 @@ export const Checkout = () => {
       
       console.log(payload)
       try {
-        const response = await axios.post('http://localhost:3000/stripe/create-checkout-session-embedded', payload) 
+        const response = await axios.post('https://ecommerce-api-new.vercel.app/stripe/create-checkout-session-embedded', payload) 
         return response.data.clientSecret;
       } catch (error) {
         console.error("Error fetching client secret:", error);
