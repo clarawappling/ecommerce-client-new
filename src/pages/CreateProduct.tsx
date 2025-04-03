@@ -92,12 +92,13 @@ export const CreateProduct = () => {
                     />
                    <label htmlFor="category">Välj kategori:</label>
                         <select id="category" name="category" value={product.category} onChange={handleChange}>
-                        <option value="Kläder">Kläder</option>
-                        <option value="Prydnader">Prydnader</option>
-                        <option value="Teknik">Teknik</option>
-                        <option value="Utomhuslek">Utomhuslek</option>
-                        <option value="Sport">Sport</option>
-                        <option value="Övriga leksaker">Övriga leksaker</option>
+                        <option value="Vax">Vax</option>
+                        <option value="">--</option>
+                            <option value="Vekar">Vekar</option>
+                            <option value="Färger">Färger</option>
+                            <option value="Gjutformar">Gjutformar</option>
+                            <option value="Ljuspennor">Ljuspennor</option>
+                            <option value="Övrigt">Övriga leksaker</option>
                         </select>
                         <button>Lägg till produkt</button>
                 </form>
