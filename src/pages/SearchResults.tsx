@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { APIResponse, IItem } from "../models/IItem";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { URLmapping } from "../constants/URLMapping";
 
 
@@ -9,6 +9,7 @@ export const SearchResults = () => {
     const [filteredResults, setFilteredResults] = useState<IItem[] | null>(null)
     const [error, setError] = useState<string>("");
     const params = useParams();
+    const navigate = useNavigate();
     
 
    useEffect (() => {
@@ -48,6 +49,12 @@ export const SearchResults = () => {
     showSearchResult()
     }, [params.searchText])
  
+
+    const handleClick = (itemLink: string) => {
+        const specificProduct = URLmapping.find(urlmapping => urlmapping.URL === itemLink)
+        if(specificProduct)
+        navigate("/product/" + specificProduct.id)
+    }
    
     if(error) return <p>{error}</p>
 
@@ -57,10 +64,9 @@ export const SearchResults = () => {
         {filteredResults && filteredResults.map((item) => (
                 <div key={item.link} className="search-result-item">
                 {item.pagemap.cse_thumbnail && 
-                <img src={item.pagemap.cse_thumbnail[0].src}/>}
+                <img src={item.pagemap.cse_thumbnail[0].src} onClick={() => handleClick(item.link)}/>}
                 <h3>{item.title}</h3>
                 <p>{item.snippet}</p>
-                <p>{item.link}</p>
                 </div>
         ))}
         </div>
