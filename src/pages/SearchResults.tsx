@@ -2,12 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { APIResponse, IItem } from "../models/IItem";
 import { useParams } from "react-router";
+import { URLListItem } from "../models/URLList";
 
 
 export const SearchResults = () => {
     const [items, setItems] = useState<IItem[] | null>(null);
     const [error, setError] = useState<string>("");
     const params = useParams();
+    // const URLmapping: URLListItem[] = [
+    //     {URL: }
+    // ]
     
 
    useEffect (() => {
@@ -53,6 +57,7 @@ export const SearchResults = () => {
                 <img src={item.pagemap.cse_thumbnail[0].src}/>}
                 <h3>{item.title}</h3>
                 <p>{item.snippet}</p>
+                <p>{item.link}</p>
                 </div>
                 
             
