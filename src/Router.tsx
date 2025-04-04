@@ -50,7 +50,7 @@ export const router = createBrowserRouter( [
             path: "/order-confirmation",
             element: <OrderConfirmation />
            },
-           {path: "/search-results",
+           {path: "/search-results/:searchText",
             element: <SearchResults />
 
            }
