@@ -6,7 +6,6 @@ import { URLListItem } from "../models/URLList";
 
 
 export const SearchResults = () => {
-    const [items, setItems] = useState<IItem[] | null>(null);
     const [filteredResults, setFilteredResults] = useState<IItem[] | null>(null)
     const [error, setError] = useState<string>("");
     const params = useParams();
@@ -44,13 +43,11 @@ export const SearchResults = () => {
               if(response.data.items === undefined) {
                 throw new Error('No results matched your query')
               }
-              setItems(response.data.items)
 
               const resultItems = response.data.items
               const filteredResult = resultItems.filter(item => 
                 URLmapping.find(urlMapping => urlMapping.URL === item.link )
               );
-              console.log(filteredResult)
               setFilteredResults(filteredResult)
 
         } catch(error: unknown) {
@@ -65,30 +62,11 @@ export const SearchResults = () => {
  
    
     if(error) return <p>{error}</p>
-    // return (
-    //     <>
-    //     <div className="result-container">
-    //     {items && items.map((item) => (
-                
-    //             <div key={item.link} className="search-result-item">
-    //             {item.pagemap.cse_thumbnail && 
-    //             <img src={item.pagemap.cse_thumbnail[0].src}/>}
-    //             <h3>{item.title}</h3>
-    //             <p>{item.snippet}</p>
-    //             <p>{item.link}</p>
-    //             </div>
-                
-            
-    //     ))}
-    //     </div>
-    //     </>
-    // )
 
     return (
         <>
         <div className="result-container">
         {filteredResults && filteredResults.map((item) => (
-                
                 <div key={item.link} className="search-result-item">
                 {item.pagemap.cse_thumbnail && 
                 <img src={item.pagemap.cse_thumbnail[0].src}/>}
@@ -96,8 +74,6 @@ export const SearchResults = () => {
                 <p>{item.snippet}</p>
                 <p>{item.link}</p>
                 </div>
-                
-            
         ))}
         </div>
         </>
