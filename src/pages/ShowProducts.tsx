@@ -17,16 +17,25 @@ export const ShowProducts = () => {
            fetchProductsHandler();
        }, [])
 
-       const handleClick =(id: number) => {
+    const handleClick =(id: number) => {
         navigate("/product/" + id)
        }
 
-         const handleAddToCart = (product: Product, quantity: number) => {
+    const handleAddToCart = (product: Product, quantity: number) => {
                dispatch({
                    type: CartActionType.ADD_ITEM,
                    payload: new CartItem(product, quantity)
                })
            }
+    
+           const getTruncatedText = (text: string, maxLength: number) => {    
+            if (text.length > maxLength) {
+                return `${text.slice(0, maxLength)}...`;
+            }
+            return text;
+           }
+
+        
    
        if(isLoading) return <span className="loader"></span>
        if(error) return <p>{error}</p>
@@ -42,8 +51,8 @@ export const ShowProducts = () => {
                     products.map((product) => (
                         <div className="product-customer-item" key={product.id}>
                             <img className="product-image" src={product.image} onClick={() => handleClick(product.id)}/>
-                            <p className="product-name " onClick={() => handleClick(product.id)}>{product.name}</p>
-                            <p className="product-description">{product.description}</p>
+                            <p className="product-name " onClick={() => handleClick(product.id)}>{getTruncatedText(product.name, 50)}</p>
+                            <p className="product-description">{getTruncatedText(product.description, 150)}</p>
                             <p className="product-price">{product.price} SEK</p>
                             <br></br>
                             {product.stock !== 0 ?
