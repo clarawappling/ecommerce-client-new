@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { APIResponse, IItem } from "../models/IItem";
 import { useNavigate, useParams } from "react-router";
 import { URLmapping } from "../constants/URLMapping";
-
+import "../styles/SearchResults.css"
 
 export const SearchResults = () => {
     const [filteredResults, setFilteredResults] = useState<IItem[] | null>(null)
@@ -21,8 +21,8 @@ export const SearchResults = () => {
             const response = await axios.get <APIResponse> ('https://www.googleapis.com/customsearch/v1', {
                 params: {
                     q: searchTerm,
-                    key: 'AIzaSyAZF8aD_9Nv1Li6rkqb2GYqVEOhpYtUS2k',
-                    cx: 'b62c9d26f9e65496e'
+                    key: 'AIzaSyBjWwaodYmlbgOzhNeUhN6zF3js7EgqNaY',
+                    cx: 'e3331809a69db446d'
                 }
             });
     
@@ -34,6 +34,7 @@ export const SearchResults = () => {
               }
 
               const resultItems = response.data.items
+              console.log(response.data)
               const filteredResult = resultItems.filter(item => 
                 URLmapping.find(urlMapping => urlMapping.URL === item.link )
               );
@@ -57,9 +58,11 @@ export const SearchResults = () => {
     }
    
     if(error) return <p>{error}</p>
+    if(filteredResults?.length === 0) return <p>Din sökning är för generell, försök skriva mer specifika sökord och pröva igen!</p>
 
     return (
         <>
+        <h1>Sökresultat</h1>
         <div className="result-container">
         {filteredResults && filteredResults.map((item) => (
                 <div key={item.link} className="search-result-item">
