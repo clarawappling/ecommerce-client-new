@@ -20,5 +20,14 @@ export interface IItem {
   }
   
   export interface APIResponse {
-    items: IItem[]
+    items: IItem[],
+    queries: Queries
+  }
+
+  export interface Queries {
+    nextPage: NextPage[],
+
+  }
+  export interface NextPage {
+    startIndex: number,
   }
