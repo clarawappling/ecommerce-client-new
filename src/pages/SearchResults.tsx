@@ -6,11 +6,13 @@ import { URLmapping } from "../constants/URLMapping";
 import "../styles/SearchResults.css"
 
 export const SearchResults = () => {
+    const apiKey = import.meta.env.VITE_API_KEY;
+    const dbId = import.meta.env.VITE_DB_ID;    
+    
     const [filteredResults, setFilteredResults] = useState<IItem[] | null>(null)
     const [error, setError] = useState<string>("");
     const params = useParams();
     const navigate = useNavigate();
-    
 
    useEffect (() => {
     const showSearchResult = async () => {
@@ -21,8 +23,8 @@ export const SearchResults = () => {
             const response = await axios.get <APIResponse> ('https://www.googleapis.com/customsearch/v1', {
                 params: {
                     q: searchTerm,
-                    key: 'AIzaSyBjWwaodYmlbgOzhNeUhN6zF3js7EgqNaY',
-                    cx: 'e3331809a69db446d'
+                    key: apiKey, 
+                    cx: dbId
                 }
             });
     
