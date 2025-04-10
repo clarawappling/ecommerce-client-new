@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import { useOrder } from "../hooks/useOrder";
 import { formatDate } from "../utils/formatDate";
 import "../styles/UpdateOrderStatus.css"
+import { Spinner } from "../components/Spinner";
 
 export const UpdateOrderStatus = () => {
     
@@ -42,11 +43,11 @@ export const UpdateOrderStatus = () => {
         navigate("/admin/orders");
     }
 
-    if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
     if(error) return <p>{error}</p>
 
     return (
         <>
+        {isLoading ? <Spinner /> : (
             <div className="update-order-status-container">
                 <h2>Uppdatera orderstatus</h2>
                 <p>Kund: {order?.customer_firstname} {order?.customer_lastname}</p> <p>Order-nr: {order?.id}</p> <p>Orderdatum: {order ? formatDate(order.created_at) : "" }</p>
@@ -60,6 +61,7 @@ export const UpdateOrderStatus = () => {
                     <button onClick={(e) => {handleClick(e)}}>Avbryt</button>
                 </form>
             </div>
+            )}
         </>
     )
 }

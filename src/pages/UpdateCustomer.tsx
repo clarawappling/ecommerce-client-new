@@ -3,6 +3,7 @@ import { Customer } from "../models/Customer"
 import { useNavigate, useParams } from "react-router";
 import { useCustomer } from "../hooks/useCustomer";
 import "../styles/UpdateCustomer.css"
+import { Spinner } from "../components/Spinner";
 
 export const UpdateCustomer = () => {
 
@@ -43,11 +44,11 @@ export const UpdateCustomer = () => {
         navigate("/admin/customers");
      }
 
-     if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
      if(error) return <p>{error}</p>
 
     return (
         <>
+        {isLoading ? <Spinner /> : (
         <div className="customer-container">
             <h2>Uppdatera kundinformation</h2>
             <form onSubmit={handleSubmit}>
@@ -112,6 +113,7 @@ export const UpdateCustomer = () => {
             <br></br>
             <button onClick={handleClick}>Avbryt</button>
         </div>
+        )}
         </>
     )
 }

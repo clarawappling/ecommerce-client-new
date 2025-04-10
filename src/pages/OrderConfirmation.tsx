@@ -5,6 +5,7 @@ import { DetailedOrder } from "../models/Order";
 import "../styles/OrderConfirmation.css"
 import CartContext from "../contexts/CartContext";
 import { CartActionType } from "../reducers/CartReducer";
+import { Spinner } from "../components/Spinner";
 
 export const OrderConfirmation = () => {
     
@@ -39,11 +40,12 @@ export const OrderConfirmation = () => {
         localStorage.removeItem('customer');
     }, [])
 
-    if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
     if(error) return <p>{error}</p>
     
     return (
         <>
+        {isLoading ? <Spinner /> : ( 
+            <>
         <h1>Tack för din beställning, {order?.customer_firstname}! </h1>
         <p>Vi är så glada över att du valt att handla hos oss. Nedan hittar du en sammanfattning av den order som är på väg hem till dig.</p>
         
@@ -61,6 +63,7 @@ export const OrderConfirmation = () => {
             })}
             </div>
             <h3>Total ordersumma: {order?.total_price} SEK</h3>
+            </> )}
         </>
     )
 }

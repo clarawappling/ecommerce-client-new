@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router"
 import { OrderItemUpdate } from "../models/OrderItem"
 import { useOrderItem } from "../hooks/useOrderItem"
 import "../styles/UpdateOrderItem.css"
+import { Spinner } from "../components/Spinner"
 
 export const UpdateOrderItem = () => {
     
@@ -30,12 +31,12 @@ export const UpdateOrderItem = () => {
         await updateOrderItemHandler(id, {quantity: orderItem.quantity})
         navigate("/admin/orders")
     }
-
-    if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
+ 
     if(error) return <p>{error}</p>
 
     return (
         <>
+        {isLoading ? <Spinner /> : (
         <div className="update-order-item-container">
             <h3>{productName}</h3>
             <form onSubmit={handleSubmit}>
@@ -45,11 +46,12 @@ export const UpdateOrderItem = () => {
                 id="quantity"
                 value={orderItem.quantity}
                 onChange={(e) => {handleChange(e) }}
-            />
+            />     
             <button>Spara</button>
-            <button onClick={(e) => {handleClick(e)}}>Avbryt</button>
+            <button onClick={(e) => {handleClick(e)}}>Avbryt</button> 
             </form>
         </div>
+        )}
         </>
     )
 }

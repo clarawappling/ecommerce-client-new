@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import { CustomerCreate } from "../models/Customer"
 import { useCustomer } from "../hooks/useCustomer"
 import { useNavigate } from "react-router"
+import { Spinner } from "../components/Spinner"
 
 export const CreateCustomer = () => {
     
@@ -44,12 +45,11 @@ export const CreateCustomer = () => {
                 navigate("/admin/customers");
           }
 
-          
-          if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
           if(error) return <p>{error}</p>
 
     return (
             <>
+            {isLoading ? <Spinner/> : (
             <div className="customer-container">
                 <h2>Kundens information</h2>
                 <form onSubmit={handleSubmit}>
@@ -125,6 +125,7 @@ export const CreateCustomer = () => {
                 
                 <button onClick={handleClick}>Avbryt</button>
             </div>
+            )}
             </>
         )
 }

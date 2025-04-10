@@ -4,6 +4,7 @@ import { APIResponse, IItem } from "../models/IItem";
 import { useNavigate, useParams } from "react-router";
 import { URLmapping } from "../constants/URLMapping";
 import "../styles/SearchResults.css"
+import { Spinner } from "../components/Spinner";
 
 export const SearchResults = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
@@ -68,10 +69,10 @@ export const SearchResults = () => {
     if(error) return <p>{error}</p>
     if(filteredResults?.length === 0) return <p>Din sökning är för generell, försök skriva mer specifika sökord och pröva igen!</p>
 
-    if(isLoading) return <><span className="loader"></span><p>Söker...</p></> 
     return (
         <>
         <h1>Sökresultat</h1>
+        {isLoading ? <Spinner/> : (
         <div className="result-container">
         {filteredResults && filteredResults.map((item) => (
                 <div key={item.link} className="search-result-item">
@@ -82,6 +83,7 @@ export const SearchResults = () => {
                 </div>
         ))}
         </div>
+        )}
         </>
     )
 }

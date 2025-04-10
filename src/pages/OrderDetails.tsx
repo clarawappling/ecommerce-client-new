@@ -5,6 +5,7 @@ import { DetailedOrder } from "../models/Order";
 import "../styles/OrderDetails.css";
 import { useOrderItem } from "../hooks/useOrderItem";
 import { formatDate } from "../utils/formatDate";
+import { Spinner } from "../components/Spinner";
 
 export const OrderDetails = () => {
     
@@ -28,11 +29,12 @@ export const OrderDetails = () => {
     const isLoading = orderIsLoading || orderItemIsLoading;
     const error = orderError || orderItemError;
     
-    if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
     if(error) return <p>{error}</p>
 
     return (
         <>
+        {isLoading ? <Spinner /> : (
+          <div>
         <h2>Detaljerad orderinformation</h2>
         <h3>Kundinformation</h3>
         <p>{order?.customer_firstname} {order?.customer_lastname}</p>
@@ -60,6 +62,8 @@ export const OrderDetails = () => {
             </div>
           )
         })} </div>
+        </div>
+      )}
         </>
     )
 }
