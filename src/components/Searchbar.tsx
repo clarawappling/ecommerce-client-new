@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router";
+import "../styles/Searchbar.css"
 
 export const Searchbar = () => {
     const [searchText, setSearchText] = useState<string>("");
@@ -20,17 +21,17 @@ export const Searchbar = () => {
     }
     
     return (
-        <>
+        <div className="search-bar-container">
         <form onSubmit={handleSubmit}>
         <input
         type="text"
         value={searchText}
         onChange={(e) => {setSearchText(e.target.value)}}/>
-        <button>Sök produkt</button>
+        <button>Go fetch!</button>
        
         </form>
     
         {error && <p>{error}</p>}
-        </>
+        </div>
     )
 }
