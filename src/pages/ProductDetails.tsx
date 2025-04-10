@@ -7,6 +7,7 @@ import "../styles/ProductDetails.css"
 import CartContext from "../contexts/CartContext";
 import { CartActionType } from "../reducers/CartReducer";
 import { CartItem } from "../models/CartItem";
+import { Spinner } from "../components/Spinner";
 
 export const ProductDetails = () => {
     
@@ -40,14 +41,13 @@ export const ProductDetails = () => {
         })
     }
  
-
-    if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
     if(error) return <p>{error}</p>
     
     return (
         <>
-         <div className="product-customer-item" id="product-customer-item" key={product?.id}>
-         <h2 className="product-name">{product?.name}</h2>
+        {isLoading ? <Spinner /> : (
+                    <div className="product-customer-item" id="product-customer-item" key={product?.id}>
+                            <h2 className="product-name">{product?.name}</h2>
                             <img className="product-image" id="product-image" src={product?.image} />
                             <p className="product-price">{product?.price} SEK</p>
                             <p className="product-description">{product?.description}</p>
@@ -61,8 +61,8 @@ export const ProductDetails = () => {
                             Lägg i varukorg
                             </button>
                          )}  
-                           
-                        </div>
+                    </div>
+            )}            
         </>
     )
 }

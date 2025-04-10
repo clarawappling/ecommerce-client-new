@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import { ProductCreate } from "../models/Product"
 import { useProduct } from "../hooks/useProduct"
 import { useNavigate } from "react-router"
+import { Spinner } from "../components/Spinner"
 
 export const CreateProduct = () => {
     
@@ -37,76 +38,74 @@ export const CreateProduct = () => {
         navigate("/admin/products");
     }
 
-    if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
     if(error) return <p>{error}</p>
 
     return (
         <>
-        
-        <div className="product-container">
-                <h2>Lägg till produkt</h2>
-                <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Namn:</label>
-                <input
-                    name="name"
-                    id="name"
-                    value={product.name}
-                    onChange={(e) => {handleChange(e)}}
-                    required
-                  />
-                  <label htmlFor="description">Beskrivning:</label>
-                  <textarea
-                    name="description"
-                    id="description"
-                    value={product.description}
-                    onChange={(e) => {handleChange(e)}}
-                    required
-                  />
-                  <label htmlFor="price">Pris:</label>
-                  <input
-                  type="number"
-                  name="price"
-                  id="price"
-                  value={product.price}
-                  onChange={(e) => {handleChange(e)}}
-                  required
+            {isLoading ? <Spinner /> : (
+                <div className="product-container">
+                        <h2>Lägg till produkt</h2>
+                        <form onSubmit={handleSubmit}>
+                        <label htmlFor="name">Namn:</label>
+                        <input
+                            name="name"
+                            id="name"
+                            value={product.name}
+                            onChange={(e) => {handleChange(e)}}
+                            required
+                        />
+                        <label htmlFor="description">Beskrivning:</label>
+                        <textarea
+                            name="description"
+                            id="description"
+                            value={product.description}
+                            onChange={(e) => {handleChange(e)}}
+                            required
+                        />
+                        <label htmlFor="price">Pris:</label>
+                        <input
+                        type="number"
+                        name="price"
+                        id="price"
+                        value={product.price}
+                        onChange={(e) => {handleChange(e)}}
+                        required
 
-                  />
-                  <label htmlFor="stock">I lager:</label>
-                  <input
-                  type="number"
-                  name="stock"
-                  id="stock"
-                  value={product.stock}
-                  onChange={(e) => {handleChange(e)}}
-                  required
+                        />
+                        <label htmlFor="stock">I lager:</label>
+                        <input
+                        type="number"
+                        name="stock"
+                        id="stock"
+                        value={product.stock}
+                        onChange={(e) => {handleChange(e)}}
+                        required
 
-                  />
-                  <label htmlFor="image">Bildlänk:</label>
-                  <input
-                    name="image"
-                    id="image"
-                    value={product.image}
-                    onChange={(e) => {handleChange(e)}}
-                    required
-                    />
-                   <label htmlFor="category">Välj kategori:</label>
-                        <select id="category" name="category" value={product.category} onChange={handleChange}>
-                        <option value="Vax">Vax</option>
-                        <option value="">--</option>
-                        <option value="">--</option>
-                            <option value="T-shirts">T-shirts</option>
-                            <option value="Vinyl">Vinyl</option>
-                            <option value="Affischer">Affischer</option>
-                            <option value="Klistermärken">Klistermärken</option>
-                            <option value="Konst">Konst</option>
-                            <option value="Övrigt">Övrigt</option>
-                        </select>
-                        <button>Lägg till produkt</button>
-                </form>
-                <br></br>
-                <button onClick={handleClick}>Avbryt</button>
-            </div>
+                        />
+                        <label htmlFor="image">Bildlänk:</label>
+                        <input
+                            name="image"
+                            id="image"
+                            value={product.image}
+                            onChange={(e) => {handleChange(e)}}
+                            required
+                            />
+                        <label htmlFor="category">Välj kategori:</label>
+                                <select id="category" name="category" value={product.category} onChange={handleChange}>
+                                <option value="">--</option>
+                                    <option value="T-shirts">T-shirts</option>
+                                    <option value="Vinyl">Vinyl</option>
+                                    <option value="Affischer">Affischer</option>
+                                    <option value="Klistermärken">Klistermärken</option>
+                                    <option value="Konst">Konst</option>
+                                    <option value="Övrigt">Övrigt</option>
+                                </select>
+                                <button>Lägg till produkt</button>
+                        </form>
+                        <br></br>
+                        <button onClick={handleClick}>Avbryt</button>
+                    </div>
+                )}    
         </>
     )
 }

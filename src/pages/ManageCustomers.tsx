@@ -2,6 +2,7 @@ import { useNavigate } from "react-router"
 import { useCustomer } from "../hooks/useCustomer";
 import { useEffect } from "react";
 import "../styles/ManageCustomers.css"
+import { Spinner } from "../components/Spinner";
 
 export const ManageCustomers = () => {
     
@@ -20,14 +21,14 @@ const handleCreate = () => {
     navigate("/admin/create-customer");
 }
 
-if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
+
 if(error) return <p>{error}</p>
     
     return (
-        <>
+        
         <div>
             <h1>Kundregister</h1>
-            
+            {isLoading ? <Spinner /> : (
             <div className="customer-table">
             <button className= "happy-btn" onClick={handleCreate}>Lägg till ny kund</button>
                 <table>
@@ -55,8 +56,9 @@ if(error) return <p>{error}</p>
                 } 
                 </table>
             </div>
+            )}
          
         </div>
-        </>
+        
     )
 }

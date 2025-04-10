@@ -4,6 +4,7 @@ import "../styles/ManageOrders.css"
 import { Link, useNavigate } from "react-router";
 import { formatDate } from "../utils/formatDate";
 import "../styles/ManageOrders.css"
+import { Spinner } from "../components/Spinner";
 
 export const ManageOrders = () => {
 
@@ -18,13 +19,13 @@ export const ManageOrders = () => {
         navigate("/admin/update-order-status/" + id);
     }
 
-    if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
     if(error) return <p>{error}</p>
 
     return (
         <>
             <div>
                 <h1>Orderlista</h1>
+                {isLoading ? <Spinner /> : (
                 <div className="order-container">
                     <table>
                         <tr>
@@ -52,6 +53,7 @@ export const ManageOrders = () => {
                     }
                     </table>
                 </div>
+                )}
             </div>
         </>
     )

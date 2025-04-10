@@ -3,6 +3,7 @@ import { Product } from "../models/Product"
 import { useNavigate, useParams } from "react-router";
 import { useProduct } from "../hooks/useProduct";
 import "../styles/UpdateProduct.css"
+import { Spinner } from "../components/Spinner";
 
 export const UpdateProduct = () => {
     
@@ -47,11 +48,12 @@ const handleSubmit = async (e:FormEvent) => {
 const handleClick = () => {
     navigate("/admin/products");
  }
- if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
+
  if(error) return <p>{error}</p>
 
     return (
         <>
+        {isLoading ? <Spinner /> : (
             <div className="product-container">
                 <h2>Uppdatera produkt</h2>
                 <form onSubmit={handleSubmit}>
@@ -109,6 +111,7 @@ const handleClick = () => {
                     <button onClick={handleClick}>Avbryt</button>
                 </form>
             </div>
+            )}
         </>
     )
 }

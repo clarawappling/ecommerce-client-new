@@ -41,10 +41,10 @@ export const ShowProducts = () => {
 
    return (
         <>
-        {isLoading ? (<Spinner/>) : (
+        
         <div className="product-container-wrapper">
             <h1>Sortiment</h1>
-           
+            {isLoading ? (<Spinner/>) : (
             <div className="product-customer-list">
                 {
                     products.map((product) => (
@@ -62,8 +62,8 @@ export const ShowProducts = () => {
                     )
                     )
                 }
-            </div>
-        </div> )}
+            </div> )}
+        </div> 
         </>
     )
 }

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useProduct } from "../hooks/useProduct"
 import "../styles/ManageProducts.css"
 import { useNavigate } from "react-router";
+import { Spinner } from "../components/Spinner";
 
 
 
@@ -22,14 +23,13 @@ export const ManageProducts = () => {
         navigate("/admin/create-product")
     }
     
-    if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
     if(error) return <p>{error}</p>
     
     return (
 <>
         <div>
             <h1>Produktlista</h1>
-            
+            {isLoading ? <Spinner /> : (
             <div className="product-container">
             <button className="happy-btn" onClick={handleCreate}>Lägg till produkt</button>
                 <table>
@@ -56,6 +56,7 @@ export const ManageProducts = () => {
                 }
                 </table>
             </div>
+            )}
         </div>
         </>
     )
