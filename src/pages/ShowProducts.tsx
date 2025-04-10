@@ -6,6 +6,7 @@ import CartContext from "../contexts/CartContext";
 import { Product } from "../models/Product";
 import { CartActionType } from "../reducers/CartReducer";
 import { CartItem } from "../models/CartItem";
+import { Spinner } from "../components/Spinner";
 
 export const ShowProducts = () => {
    
@@ -35,15 +36,12 @@ export const ShowProducts = () => {
             return text;
            }
 
-        
-   
-       
-       if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
+
        if(error) return <p>{error}</p>
 
    return (
         <>
-        
+        {isLoading ? (<Spinner/>) : (
         <div className="product-container-wrapper">
             <h1>Sortiment</h1>
            
@@ -65,7 +63,7 @@ export const ShowProducts = () => {
                     )
                 }
             </div>
-        </div>
+        </div> )}
         </>
     )
 }

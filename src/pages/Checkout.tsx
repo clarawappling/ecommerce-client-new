@@ -11,6 +11,7 @@ import { OrderCreate } from "../models/Order";
 import { useOrder } from "../hooks/useOrder";
 import axios from "axios";
 import { StripeOrder } from "../models/StripeOrder";
+import { Spinner } from '../components/Spinner';
 
 
 const stripePromise = loadStripe('pk_test_51R4JflEUcfJR78A9I4729RJfcSNRKqB9njUYAcAAmJTLHAsbn8xWDNaakNUUyvbP2dHDE0UisUraA1GgHnwmmg1F00aCscjeAl')
@@ -20,6 +21,7 @@ export const Checkout = () => {
   const {cart} = React.useContext(CartContext)
   const {getCustomerByEmailHandler, createCustomerHandler} = useCustomer();
   const {createOrderHandler, isLoading, error} = useOrder();
+  const [loading, setLoading] = React.useState<boolean>(false);
   
   const [clientSecret, setClientSecret] = React.useState<string | null>(null);
   const [customer, setCustomer] = React.useState<CustomerCreate>(() => {
@@ -39,7 +41,7 @@ export const Checkout = () => {
 // Stripe integration
 
     const fetchClientSecret = React.useCallback(async (payload: StripeOrder) => {
-      
+      setLoading(true)
       console.log(payload)
       try {
         const response = await axios.post('https://ecommerce-api-new.vercel.app/stripe/create-checkout-session-embedded', payload) 
@@ -47,6 +49,8 @@ export const Checkout = () => {
       } catch (error) {
         console.error("Error fetching client secret:", error);
         throw error; 
+      } finally {
+        setLoading(false)
       }
     }, []);
 
@@ -118,14 +122,16 @@ export const Checkout = () => {
             }
 
 
-            if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
+            // if(isLoading) return <><p>Laddar...</p></> 
             if(error) return <p>{error}</p>
       
 return (
         <> 
 {
   cart.length > 0 && (
-<> { !clientSecret && (
+<>  {isLoading || loading ? <Spinner /> : (
+
+!clientSecret &&  (
   <div className="customer-container">
                 <h2>Kundens information</h2>
                 <form onSubmit={handleSubmit}>
@@ -197,8 +203,10 @@ return (
                     <button>Spara uppgifter och gå till betalning</button>
                 </form>
             </div>
-)}
-             { clientSecret && (
+))}
+
+{isLoading || loading ? <Spinner /> : (
+              clientSecret && (
             
   <div id="stripe-container">
   <EmbeddedCheckoutProvider
@@ -207,7 +215,7 @@ return (
     >
       <EmbeddedCheckout />
     </EmbeddedCheckoutProvider>
-    </div> )}
+    </div> ) ) }
 </>
 )}     
  </>
