@@ -20,7 +20,7 @@ const handleCreate = () => {
     navigate("/admin/create-customer");
 }
 
-if(isLoading) return <span className="loader"></span>
+if(isLoading) return <><span className="loader"></span><p>Laddar...</p></> 
 if(error) return <p>{error}</p>
     
     return (
