@@ -11,11 +11,13 @@ export const SearchResults = () => {
     
     const [filteredResults, setFilteredResults] = useState<IItem[] | null>(null)
     const [error, setError] = useState<string>("");
+    const [isLoading, setIsLoading] = useState <boolean>(false)
     const params = useParams();
     const navigate = useNavigate();
 
    useEffect (() => {
     const showSearchResult = async () => {
+        setIsLoading(true)
         setError('')
         if (!params.searchText) return;
         const searchTerm = params.searchText;
@@ -47,7 +49,11 @@ export const SearchResults = () => {
             if(error instanceof Error) {
                 setError(error.message)
                 console.log(error);
-              } }
+              } 
+        } finally {
+            setIsLoading(false)
+        }
+        
        }
     showSearchResult()
     }, [params.searchText])
@@ -62,6 +68,7 @@ export const SearchResults = () => {
     if(error) return <p>{error}</p>
     if(filteredResults?.length === 0) return <p>Din sökning är för generell, försök skriva mer specifika sökord och pröva igen!</p>
 
+    if(isLoading) return <><span className="loader"></span><p>Söker...</p></> 
     return (
         <>
         <h1>Sökresultat</h1>
