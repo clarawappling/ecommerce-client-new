@@ -31,11 +31,11 @@ export const SearchResults = () => {
                 }
             });
     
-            if (searchTerm.length <= 2) {
-                throw new Error('A search query must consist of at least 3 characters')
-              }
               if(response.data.items === undefined) {
-                throw new Error('No results matched your query')
+                throw new Error('Det finns inga produkter som matchade din sökning, prova igen med andra sökord!')
+              }
+              if (response.status === 429) {
+                throw new Error('Maximalt antal sökningar gjorda för idag, kom tillbaka till sökfunktionen igen någon gång imorgon!')
               }
 
               const resultItems = response.data.items
@@ -44,6 +44,7 @@ export const SearchResults = () => {
                 URLmapping.find(urlMapping => urlMapping.URL === item.link )
               );
               setFilteredResults(filteredResult)
+             
 
         } catch(error: unknown) {
         
