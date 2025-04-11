@@ -30,7 +30,7 @@ export const ManageProducts = () => {
         <div>
             <h1>Produktlista</h1>
             {isLoading ? <Spinner /> : (
-            <div className="product-container">
+            <div className="product-list-container">
             <button className="happy-btn" onClick={handleCreate}>Lägg till produkt</button>
                 <table>
                     <tr>
