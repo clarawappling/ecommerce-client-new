@@ -4,7 +4,7 @@
         display: flex;
         list-style: none;
         justify-content: center;
-        gap: 5rem;
+        gap: 3rem;
         font-family: "Abel";
         font-size: x-large;
         margin: 0;
@@ -14,3 +14,15 @@
         }
         
 }
+
+
+@media screen and (min-width: 780px) {
+ 
+    #main-nav, #admin-nav {
+
+        ul {
+            justify-content: flex-end;
+            }
+            
+    }
+  }
