@@ -24,19 +24,20 @@ a:hover {
 
 body {
   margin: 0; 
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: center;
-  place-items: center;  
+
 
 }
 
 
 main {
-margin-top: 5rem;
+margin-top: 2rem;
 margin-bottom: 10rem;
 margin-right: 1rem;
 margin-left: 1rem;
+display: flex;
+flex-wrap: wrap; 
+justify-content: center;
+place-items: center;  
 }
 
 h1 {
@@ -89,40 +90,18 @@ form {
   }
 }
 
-header {
-  padding: 1rem;
-  /* width: 90%;
-  flex-basis: 100%; */
+.header, .admin-header {
+  padding: 2rem;
+  flex-basis: 100%;
+  background-color: rgba(240, 248, 255, 0.822);
+  box-shadow: 1px 3px 1px rgb(216, 235, 252);
 
 }
 
-.loader {
-    width: 60px;
-    height: 60px;
-    border: 24px solid;
-    border-color: rgba(255, 255, 255, 0.15)
-                 rgba(255, 255, 255, 0.25)
-                 rgba(255, 255, 255, 0.35)
-                 rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: animloader 1s linear infinite;
-  
+.header {
+  min-height: 200px;
 }
 
-@keyframes animloader {
-  0% {
-    border-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.75);
-}
-  33% {
-    border-color: rgba(255, 255, 255, 0.75) rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35);
-}
-  66% {
-    border-color: rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.75) rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.25);
-}
-  100% {
-    border-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.75) rgba(255, 255, 255, 0.15);
-}
-}
+
+
 
