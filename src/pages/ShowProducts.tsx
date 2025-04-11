@@ -43,7 +43,7 @@ export const ShowProducts = () => {
         <>
         
         <div className="product-container-wrapper">
-            <h1>Sortiment</h1>
+            <h1>Musik & merch</h1>
             {isLoading ? (<Spinner/>) : (
             <div className="product-customer-list">
                 {
