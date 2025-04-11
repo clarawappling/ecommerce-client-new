@@ -3,6 +3,7 @@ import { Cart } from "../components/Cart"
 import { useContext } from "react";
 import CartContext from "../contexts/CartContext";
 import { CartActionType } from "../reducers/CartReducer";
+import "../styles/CartPage.css"
 
 export const CartPage = () => {
 
@@ -22,6 +23,8 @@ export const CartPage = () => {
 
     return (
         <>
+        
+        <div className="btn-container">
         <h1>Varukorg</h1>
         <Cart/>
         {cart.length > 0 && (
@@ -30,6 +33,7 @@ export const CartPage = () => {
                     <button className="happy-btn" onClick={handleClick}>Till kassan</button>
                 </>
             )}
+            </div>
         </>
     )
 }
