@@ -121,103 +121,97 @@ export const Checkout = () => {
               } 
             }
 
-
-            // if(isLoading) return <><p>Laddar...</p></> 
             if(error) return <p>{error}</p>
-      
-return (
-        <> 
-{
-  cart.length > 0 && (
-<>  {isLoading || loading ? <Spinner /> : (
 
-!clientSecret &&  (
-  <div className="customer-container">
-                <h2>Kundens information</h2>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="firstname">Förnamn: </label>
-                    <input
-                        name="firstname"
-                        id="firstname"
-                        value={customer?.firstname ?? ''}
-                        onChange={(e) => {handleChange(e)}}
-                        required
-                    />
-                       <label htmlFor="lastname">Efternamn: </label>
-                    <input
-                        name="lastname"
-                        id="lastname"
-                        value={customer?.lastname ?? ''}
-                        onChange={(e) => {handleChange(e)}}
-                        required
-                    />
-                       <label htmlFor="email">E-mail: </label>
-                    <input
-                        name="email"
-                        id="email"
-                        value={customer?.email ?? ''}
-                        onChange={(e) => {handleChange(e)}}
-                        required
-                    />
-                       <label htmlFor="phone">Telefonnummer: </label>
-                    <input
-                        name="phone"
-                        id="phone"
-                        value={customer?.phone ?? ''}
-                        onChange={(e) => {handleChange(e)}}
-                        required
-                    />
-                
-                       <label htmlFor="street_address">Gatuadress: </label>
-                    <input
-                        name="street_address"
-                        id="street_address"
-                        value={customer?.street_address ?? ''}
-                        onChange={(e) => {handleChange(e)}}
-                        required
-                    />
-                       <label htmlFor="postal_code">Postkod: </label>
-                    <input
-                        name="postal_code"
-                        id="postal_code"
-                        value={customer?.postal_code ?? ''}
-                        onChange={(e) => {handleChange(e)}}
-                        required
-                    />
-                    <label htmlFor="city">Ort: </label>
-                      <input
-                        name="city"
-                        id="city"
-                        value={customer?.city ?? ''}
-                        onChange={(e) => {handleChange(e)}}
-                        required
-                    />
-                       <label htmlFor="country">Land: </label>
-                    <input
-                        name="country"
-                        id="country"
-                        value={customer?.country ?? ''}
-                        onChange={(e) => {handleChange(e)}}
-                        required
-                    />
-                    <button>Spara uppgifter och gå till betalning</button>
-                </form>
-            </div>
-))}
-
-{isLoading || loading ? <Spinner /> : (
-              clientSecret && (
-            
-  <div id="stripe-container">
-  <EmbeddedCheckoutProvider
-      stripe={stripePromise}
-      options={{clientSecret}}
-    >
-      <EmbeddedCheckout />
-    </EmbeddedCheckoutProvider>
-    </div> ) ) }
-</>
-)}     
- </>
-    )
+            return (
+              <>
+                {cart.length > 0 && (
+                  <>
+                    {isLoading || loading ? (
+                      <Spinner />
+                    ) : !clientSecret ? (
+                      <div className="customer-container">
+                        <h2>Kundens information</h2>
+                        <form onSubmit={handleSubmit}>
+                          <label htmlFor="firstname">Förnamn: </label>
+                          <input
+                            name="firstname"
+                            id="firstname"
+                            value={customer?.firstname ?? ''}
+                            onChange={handleChange}
+                            required
+                          />
+                          <label htmlFor="lastname">Efternamn: </label>
+                          <input
+                            name="lastname"
+                            id="lastname"
+                            value={customer?.lastname ?? ''}
+                            onChange={handleChange}
+                            required
+                          />
+                          <label htmlFor="email">E-mail: </label>
+                          <input
+                            name="email"
+                            id="email"
+                            value={customer?.email ?? ''}
+                            onChange={handleChange}
+                            required
+                          />
+                          <label htmlFor="phone">Telefonnummer: </label>
+                          <input
+                            name="phone"
+                            id="phone"
+                            value={customer?.phone ?? ''}
+                            onChange={handleChange}
+                            required
+                          />
+                          <label htmlFor="street_address">Gatuadress: </label>
+                          <input
+                            name="street_address"
+                            id="street_address"
+                            value={customer?.street_address ?? ''}
+                            onChange={handleChange}
+                            required
+                          />
+                          <label htmlFor="postal_code">Postkod: </label>
+                          <input
+                            name="postal_code"
+                            id="postal_code"
+                            value={customer?.postal_code ?? ''}
+                            onChange={handleChange}
+                            required
+                          />
+                          <label htmlFor="city">Ort: </label>
+                          <input
+                            name="city"
+                            id="city"
+                            value={customer?.city ?? ''}
+                            onChange={handleChange}
+                            required
+                          />
+                          <label htmlFor="country">Land: </label>
+                          <input
+                            name="country"
+                            id="country"
+                            value={customer?.country ?? ''}
+                            onChange={handleChange}
+                            required
+                          />
+                          <button>Spara uppgifter och gå till betalning</button>
+                        </form>
+                      </div>
+                    ) : (
+                      <div id="stripe-container">
+                        <EmbeddedCheckoutProvider
+                          stripe={stripePromise}
+                          options={{ clientSecret }}
+                        >
+                          <EmbeddedCheckout />
+                        </EmbeddedCheckoutProvider>
+                      </div>
+                    )}
+                  </>
+                )}
+              </>
+            );
 }
