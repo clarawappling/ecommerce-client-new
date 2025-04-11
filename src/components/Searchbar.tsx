@@ -25,6 +25,7 @@ export const Searchbar = () => {
         <form onSubmit={handleSubmit}>
         <input
         type="text"
+        placeholder="Sökord"
         value={searchText}
         onChange={(e) => {setSearchText(e.target.value)}}/>
         <button>Go fetch!</button>
