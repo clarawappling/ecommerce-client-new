@@ -100,7 +100,8 @@ export const SearchResults = () => {
 
   return (
     <>
-      <h1>Sökresultat</h1>
+    <div>
+      <h1 className="search-results-h1">Sökresultat</h1>
       {isLoading ? (
         <Spinner />
       ) : (
@@ -121,6 +122,7 @@ export const SearchResults = () => {
             ))}
         </div>
       )}
+      </div>
     </>
   );
 };

@@ -15,7 +15,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #575cf7;
   text-decoration: inherit;
 }
 a:hover {
@@ -24,8 +24,6 @@ a:hover {
 
 body {
   margin: 0; 
-
-
 }
 
 
@@ -41,8 +39,9 @@ place-items: center;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3.7em;
   line-height: 1.1;
+  font-family: "Just Another Hand";
 }
 
 button {
@@ -93,8 +92,8 @@ form {
 .header, .admin-header {
   padding: 2rem;
   flex-basis: 100%;
-  background-color: rgba(240, 248, 255, 0.822);
-  box-shadow: 1px 3px 1px rgb(216, 235, 252);
+  background-color: #b7d2e57a;
+  box-shadow: 1px 1.5px 1px rgba(216, 235, 252, 0.26);
 
 }
 
