@@ -8,8 +8,10 @@ export const Layout = () => {
     return (
     <>
     <header> 
+        <div className="header">
         <Navigation />
         <Searchbar />
+        </div>
     </header>
     <main>
         <Outlet />

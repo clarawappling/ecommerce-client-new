@@ -1,0 +1,6 @@
+.cart-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
+}

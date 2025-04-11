@@ -5,7 +5,9 @@ export const AdminLayout = () => {
 return ( 
     <>
     <header>
+        <div className="admin-header">
         <NavigationAdmin />
+        </div>
     </header>
     <main>
         <Outlet />

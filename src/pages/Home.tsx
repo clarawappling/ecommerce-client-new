@@ -9,13 +9,14 @@ export const Home = () => {
     return (
         <>
         <div>
-        <h1 className="h1-fun">BOB HUND FOREVER - THE STORE</h1>
+        <h1 className="h1-fun">BOB HUND FOREVER</h1>
             <div className="img-container">
                 {!isImageLoaded && (<Spinner />)}
                 <img 
                 src={bobhund}
                 onLoad={() => setIsImageLoaded(true)}/>
             </div>
+            <h1 className="h1-fun">- THE STORE</h1>
         </div>
         
         </>
