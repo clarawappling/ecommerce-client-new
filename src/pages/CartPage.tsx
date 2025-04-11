@@ -24,7 +24,7 @@ export const CartPage = () => {
     return (
         <>
         
-        <div className="btn-container">
+        <div className="cart-page-container">
         <h1>Varukorg</h1>
         <Cart/>
         {cart.length > 0 && (
