@@ -33,6 +33,9 @@ td {
     table td:nth-child(3) {
       display: none;
     }
+    table {
+      font-size: 0.8rem;
+    }
     
   }
   @media screen and (max-width: 860px) {
