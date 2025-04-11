@@ -1,9 +1,12 @@
+
 .cart-list {
     list-style: none;
+    margin: 0;
+    padding: 0;
     .cart-item {
         background-color:rgb(243, 243, 243) ;
         border-radius: 3px;
-        padding: 1rem;
+        padding: 3rem;
         margin: 1rem;
         img {
             max-width: 150px;
@@ -31,6 +34,8 @@
 
 .alert-btn {
     background-color: rgba(255, 119, 119, 0.473);
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .happy-btn {
