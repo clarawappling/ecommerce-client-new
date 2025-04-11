@@ -1,12 +1,28 @@
 .img-container {
     img {
-        max-width:90%;
+        max-width:80%;
         border-radius: 500px;
     }
 }
 .h1-fun {
     font-family: "Londrina Shadow";
     font-size: 6rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     
+}
+
+@media screen and (min-width: 580px) {
+    .img-container {
+        img {
+            max-width: 60%;
+        }
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .img-container {
+        img {
+            max-width: 30%;
+        }
+    }
 }
