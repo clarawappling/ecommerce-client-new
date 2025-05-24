@@ -28,7 +28,7 @@ export const Searchbar = () => {
         placeholder="Sökord"
         value={searchText}
         onChange={(e) => {setSearchText(e.target.value)}}/>
-        <button>Go fetch!</button>
+        <button id="search-btn">Go fetch!</button>
        
         </form>
     
